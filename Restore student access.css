@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #d7dbdf;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.header {
+  display: flex;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+  padding: 0.56rem 2rem;
+}
+.header a {
+  color: black;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.header a:hover {
+  color: greenyellow;
+}
+.header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: green;
+}
+.card {
+  background-color: white;
+  width: min(400px, 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  border: black 1px solid;
+  display: flex;
+  flex-direction: column;
+}
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4c4f54;
+  margin-top: 0%;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.input-group label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4c4f54;
+  margin-bottom: 0.5rem;
+}
+.input-group input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4c4f54;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  border: black 1px solid;
+}
+.submit-btn {
+  width: min(100%, 200px);
+  min-height: 56px;
+  cursor: pointer;
+  background: #08ac31;
+  color: black;
+  border: none;
+  border-radius: 8px;
+}
