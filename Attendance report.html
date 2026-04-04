@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #68d34d;
+            --border-color: #bcbcbc;
+            --text-dark: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 414px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .header-nav h1 {
+            flex-grow: 1;
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-right: 30px;
+        }
+
+        /* Report Paper Style */
+        .report-card {
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            margin: 10px 15px 30px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-grow: 1;
+            font-size: 0.75rem;
+        }
+
+        /* University Header Section */
+        .uni-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .uni-details {
+            font-size: 0.6rem;
+            line-height: 1.2;
+        }
+
+        .uni-name {
+            font-weight: bold;
+            font-size: 0.65rem;
+            margin-bottom: 2px;
+        }
+
+        /* Student & Course Info */
+        .report-title {
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+
+        .meta-data {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .course-sub-title {
+            text-align: center;
+            font-weight: bold;
+            margin: 5px 0 10px;
+        }
+
+        .info-line {
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        /* Attendance Table */
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .attendance-table th, .attendance-table td {
+            border: 1px solid black;
+            padding: 4px 2px;
+            text-align: left;
+        }
+
+        .attendance-table th {
+            background-color: #f9f9f9;
+            font-size: 0.65rem;
+        }
+
+        .center { text-align: center; }
+
+        @media (max-width: 380px) {
+            .report-card { margin: 5px 10px; padding: 10px; }
+            .uni-details { font-size: 0.55rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <header class="header-nav">
+            <div class="back-arrow">＜</div>
+            <h1>Attendance Report</h1>
+        </header>
+
+        <main class="report-card">
+            <div class="uni-header">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" width="50" height="50">
+                        <circle cx="50" cy="50" r="40" stroke="#003366" stroke-width="2" fill="none" />
+                        <text x="50%" y="55%" text-anchor="middle" font-size="20" font-weight="bold">MMU</text>
+                    </svg>
+                </div>
+                <div class="uni-details">
+                    <p class="uni-name">MULTI MEDIA UNIVERSITY</p>
+                    <p>P.O BOX 15653-00503</p>
+                    <p>Telephone: , Phone: +254 20 7252000, Email: info@mmu.ac.ke, Fax:</p>
+                </div>
+            </div>
+
+            <div class="report-title">STUDENT ATTENDANCE</div>
+
+            <div class="meta-data">
+                <span>CIT123</span>
+                <span>23-10-2026</span>
+            </div>
+
+            <div class="course-sub-title">COMPUTER PROGRAMMING</div>
+
+            <div class="info-line">COURSE:Electrical engineering</div>
+            <div class="info-line">SEMESTER:2025/2026 -2.2</div>
+            <div class="info-line">TOTAL CLASSES:8</div>
+
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th class="center">NO</th>
+                        <th>REG-NO</th>
+                        <th>NAME</th>
+                        <th class="center">CLASS ATTENDED</th>
+                        <th>PERCENT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="center">1</td><td>ENG-219-132/24</td><td>Ezyline</td><td class="center">7</td><td>87.50%</td></tr>
+                    <tr><td class="center">2</td><td>ENG-219-132/24</td><td>Norman</td><td class="center">4</td><td>50.00%</td></tr>
+                    <tr><td class="center">3</td><td>ENG-219-132/24</td><td>Collins</td><td class="center">3</td><td>37.50%</td></tr>
+                    <tr><td class="center">4</td><td>ENG-219-132/24</td><td>Brian</td><td class="center">2</td><td>25.00%</td></tr>
+                    <tr><td class="center">5</td><td>ENG-219-132/24</td><td>Rogers</td><td class="center">5</td><td>62.50%</td></tr>
+                    <tr><td class="center">6</td><td>ENG-219-132/24</td><td>Joseph</td><td class="center">6</td><td>75.00%</td></tr>
+                    <tr><td class="center">7</td><td>ENG-219-132/24</td><td>Raymond</td><td class="center">1</td><td>12.50%</td></tr>
+                    <tr><td class="center">8</td><td>ENG-219-132/24</td><td>Titus</td><td class="center">4</td><td>50.00%</td></tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+</body>
+</html>

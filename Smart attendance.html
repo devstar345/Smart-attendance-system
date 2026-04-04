@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Attendance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #68d34d;
+            --border-light: #bcbcbc;
+            --text-dark: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 414px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .brand-logo {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background-color: #000;
+            border-radius: 2px;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            padding: 25px 20px;
+        }
+
+        .welcome-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sub-text {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Units Container Card */
+        .units-container {
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            margin: 0 15px 20px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .container-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Individual Unit Item Card */
+        .unit-card {
+            border: 1px solid #000;
+            border-radius: 25px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .unit-detail {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        /* Start Lesson Button */
+        .start-btn {
+            background-color: var(--primary-green);
+            color: #000;
+            border: none;
+            padding: 12px 0;
+            width: 70%;
+            align-self: center;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 380px) {
+            .welcome-text { font-size: 1.2rem; }
+            .unit-detail { font-size: 1rem; }
+            .container-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <nav class="navbar">
+            <div class="brand-logo">Smart Attendance</div>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <header class="welcome-section">
+            <h1 class="welcome-text">Welcome back ,Dr.John</h1>
+            <p class="sub-text">Here are your teaching units for this semester</p>
+        </header>
+
+        <main class="units-container">
+            <h2 class="container-title">Your units</h2>
+
+            <div class="unit-card">
+                <div class="unit-detail">Unit code:</div>
+                <div class="unit-detail">Unit name:</div>
+                <div class="unit-detail">Course:</div>
+                <div class="unit-detail">Year:</div>
+                <div class="unit-detail">No of students:</div>
+                <button class="start-btn">Start lesson</button>
+            </div>
+
+            <div class="unit-card">
+                <div class="unit-detail">Unit code:</div>
+                <div class="unit-detail">Unit name:</div>
+                <div class="unit-detail">Course:</div>
+                <div class="unit-detail">Year:</div>
+                <div class="unit-detail">No of students:</div>
+                <button class="start-btn">Start lesson</button>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
