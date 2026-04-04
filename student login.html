@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#f2f2f2;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:380px;
+  padding:15px;
+}
+
+/* CARD */
+.card{
+  background:#dcdcdc;
+  border-radius:25px;
+  padding:35px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:25px;
+}
+
+/* LOGO */
+.logo{
+  width:90px;
+  height:90px;
+}
+
+/* TITLE */
+.title{
+  font-size:28px;
+  font-weight:bold;
+  color:#555;
+}
+
+/* INPUT */
+.input-group{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #333;
+  padding:10px 5px;
+}
+
+.input-group svg{
+  width:20px;
+  height:20px;
+  stroke:#555;
+}
+
+.input-group input{
+  border:none;
+  outline:none;
+  background:transparent;
+  width:100%;
+  font-size:14px;
+}
+
+/* BUTTONS */
+.btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:20px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.login-btn{
+  background:#000;
+  color:#fff;
+}
+
+.register-btn{
+  background:#1f5f8f;
+  color:#fff;
+}
+
+/* FORGOT */
+.forgot{
+  font-size:14px;
+  color:#666;
+}
+
+/* MEDIA QUERY */
+@media (min-width:600px){
+  .container{
+    max-width:420px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <!-- MMU STYLE LOGO -->
+    <svg class="logo" viewBox="0 0 100 100">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#0077cc"/>
+          <stop offset="100%" style="stop-color:#ff4d4d"/>
+        </linearGradient>
+      </defs>
+      <circle cx="40" cy="40" r="10" fill="#0077cc"/>
+      <ellipse cx="50" cy="50" rx="35" ry="15" fill="none" stroke="url(#grad1)" stroke-width="4"/>
+      <text x="20" y="70" font-size="20" fill="#333" font-weight="bold">MMU</text>
+    </svg>
+
+    <div class="title">Student login</div>
+
+    <!-- USER INPUT -->
+    <div class="input-group">
+      <!-- USER ICON -->
+      <svg fill="none" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"></circle>
+        <path d="M5.5 21c1.5-4 11.5-4 13 0"></path>
+      </svg>
+      <input type="text" placeholder="Enter your registration number">
+    </div>
+
+    <!-- PASSWORD INPUT -->
+    <div class="input-group">
+      <!-- LOCK ICON -->
+      <svg fill="none" stroke-width="2" viewBox="0 0 24 24">
+        <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+        <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+      </svg>
+      <input type="password" placeholder="Enter your password">
+    </div>
+
+    <button class="btn login-btn">Login</button>
+
+    <div class="forgot">forgot password....?</div>
+
+    <button class="btn register-btn">Register</button>
+
+  </div>
+</div>
+
+</body>
+</html>

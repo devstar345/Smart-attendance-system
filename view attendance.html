@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attendance UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #68d34d;
+            --absent-red: #ff0000;
+            --table-bg: #0b111e;
+            --grid-line: #1e293b;
+            --text-main: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 414px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-right: 30px;
+        }
+
+        /* Course Info Section */
+        .course-info {
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .course-name {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Attendance Table Logic */
+        .table-container {
+            padding: 0 10px;
+            overflow-x: auto;
+        }
+
+        .attendance-grid {
+            display: grid;
+            grid-template-columns: 70px repeat(12, 30px);
+            background-color: var(--table-bg);
+            border: 1px solid var(--grid-line);
+        }
+
+        .cell {
+            height: 40px;
+            border: 0.5px solid var(--grid-line);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .header-cell {
+            font-weight: bold;
+        }
+
+        .month-cell {
+            color: var(--primary-green);
+            justify-content: flex-start;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+
+        /* Legend Section */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px 10px;
+            font-size: 0.95rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .box {
+            width: 16px;
+            height: 16px;
+            border: 1.5px solid;
+            border-radius: 2px;
+        }
+
+        .box.present { border-color: var(--primary-green); }
+        .box.absent { border-color: var(--absent-red); }
+        .box.empty { border-color: #8e8e8e; }
+
+        /* Percentage Display */
+        .attendance-stats {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .percentage {
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <header class="header">
+            <div class="back-arrow">＜</div>
+            <h1>View Attendance</h1>
+        </header>
+
+        <section class="course-info">
+            <div class="top-row">
+                <span>CIT123</span>
+                <span>23-10-2023</span>
+            </div>
+            <div class="course-name">Computer Programming</div>
+        </section>
+
+        <div class="table-container">
+            <div class="attendance-grid">
+                <div class="cell header-cell">Month</div>
+                <div class="cell header-cell">1</div><div class="cell header-cell">2</div>
+                <div class="cell header-cell">3</div><div class="cell header-cell">4</div>
+                <div class="cell header-cell">5</div><div class="cell header-cell">6</div>
+                <div class="cell header-cell">7</div><div class="cell header-cell">8</div>
+                <div class="cell header-cell">9</div><div class="cell header-cell">10</div>
+                <div class="cell header-cell">11</div><div class="cell header-cell">12</div>
+
+                <div class="cell month-cell">Sep</div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+                <div class="cell month-cell">Oct</div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+                <div class="cell month-cell">Nov</div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+                <div class="cell month-cell">Dec</div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><div class="box present"></div> Present</div>
+            <div class="legend-item"><div class="box absent"></div> Absent</div>
+            <div class="legend-item"><div class="box empty"></div> Present</div>
+        </div>
+
+        <div class="attendance-stats">
+            <p class="percentage">Attendance:0%</p>
+        </div>
+    </div>
+
+</body>
+</html>

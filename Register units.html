@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Units UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS STYLING SECTION */
+        :root {
+            --primary-green: #68d34d;
+            --card-bg: #d9d9d9;
+            --text-secondary: #8e8e8e;
+            --border-light: #bcbcbc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+
+        /* The Main Mobile Frame */
+        .phone-container {
+            width: 100%;
+            max-width: 414px; /* Standard Mobile Width */
+            background-color: white;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Header Layout */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 30px; /* Balances the back arrow */
+        }
+
+        /* The Outer Bordered Card */
+        .registration-card {
+            border: 1.5px solid var(--border-light);
+            border-radius: 35px;
+            margin: 10px 20px 30px;
+            padding: 30px 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Unit List using CSS Grid */
+        .unit-list {
+            display: grid;
+            gap: 15px;
+            margin-bottom: auto;
+        }
+
+        /* Individual Unit Row using Flexbox */
+        .unit-item {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .unit-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .unit-code {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .unit-name {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Green Checkbox */
+        .checkbox-rect {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--primary-green);
+            border-radius: 4px;
+            background: transparent;
+        }
+
+        /* Footer Section */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-top: 40px;
+        }
+
+        .register-btn {
+            width: 100%;
+            background-color: var(--primary-green);
+            color: #000;
+            border: none;
+            padding: 16px;
+            border-radius: 18px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .unit-counter {
+            color: #b5b5b5;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 380px) {
+            .registration-card {
+                margin: 10px 10px;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <header class="header">
+            <div class="back-arrow">＜</div>
+            <h1>Register Units</h1>
+        </header>
+
+        <main class="registration-card">
+            <div class="unit-list">
+                <div class="unit-item">
+                    <div class="unit-info">
+                        <span class="unit-code">CIT123</span>
+                        <span class="unit-name">Computer programming</span>
+                    </div>
+                    <div class="checkbox-rect"></div>
+                </div>
+
+                <div class="unit-item">
+                    <div class="unit-info">
+                        <span class="unit-code">CIT123</span>
+                        <span class="unit-name">Computer programming</span>
+                    </div>
+                    <div class="checkbox-rect"></div>
+                </div>
+
+                <div class="unit-item">
+                    <div class="unit-info">
+                        <span class="unit-code">CIT123</span>
+                        <span class="unit-name">Computer programming</span>
+                    </div>
+                    <div class="checkbox-rect"></div>
+                </div>
+
+                <div class="unit-item">
+                    <div class="unit-info">
+                        <span class="unit-code">CIT123</span>
+                        <span class="unit-name">Computer programming</span>
+                    </div>
+                    <div class="checkbox-rect"></div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <button class="register-btn">Register Selected Units</button>
+                <p class="unit-counter">0 Units Selected</p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
