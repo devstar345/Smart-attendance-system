@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Clean UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #68d34d;
+            --border-gray: #bcbcbc;
+            --bg-light: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 414px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px;
+        }
+
+        /* Navigation Header */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 25px 20px 10px;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 30px;
+        }
+
+        /* Main Section Cards */
+        .section-card {
+            border: 1px solid var(--border-gray);
+            border-radius: 30px;
+            margin: 15px 20px;
+            padding: 25px 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Profile Avatar Placeholder */
+        .avatar-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .avatar-circle {
+            width: 110px;
+            height: 110px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Inner Content Box for Details */
+        .details-box {
+            border: 1px solid #000;
+            border-radius: 20px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .label {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        /* Footer Button */
+        .footer-action {
+            padding: 15px 20px;
+            margin-top: auto;
+        }
+
+        .update-btn {
+            width: 100%;
+            background-color: var(--primary-green);
+            color: #000;
+            border: none;
+            padding: 16px;
+            border-radius: 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .update-btn:active {
+            transform: scale(0.98);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <header class="header">
+            <div class="back-arrow">＜</div>
+            <h1>My Profile</h1>
+        </header>
+
+        <main class="section-card">
+            <h2 class="section-title">Basic Information</h2>
+            
+            <div class="avatar-wrap">
+                <div class="avatar-circle">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#68d34d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="details-box">
+                <div class="label">REG NO:</div>
+                <div class="label">Name:</div>
+                <div class="label">ID:</div>
+                <div class="label">Gender:</div>
+                <div class="label">Date of Birth:</div>
+            </div>
+        </main>
+
+        <section class="section-card">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="details-box">
+                <div class="label">Phone No:</div>
+                <div class="label">Email:</div>
+            </div>
+        </section>
+
+        <div class="footer-action">
+            <button class="update-btn">Update information</button>
+        </div>
+    </div>
+
+</body>
+</html>

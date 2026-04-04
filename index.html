@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Lesson UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #68d34d;
+            --border-color: #bcbcbc;
+            --text-dark: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 414px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVIGATION FOR LECTURER --- */
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+            background: #f0f0f0;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        /* ------------------------------- */
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .back-arrow {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .header-nav h1 {
+            flex-grow: 1;
+            text-align: center;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 30px;
+        }
+
+        .course-summary {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .meta-data {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .course-title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .selection-card {
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            margin: 40px 15px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-label {
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .time-select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            appearance: none;
+            background-color: white;
+        }
+
+        .save-btn {
+            background-color: var(--primary-green);
+            color: #000;
+            border: none;
+            padding: 15px;
+            width: 60%;
+            align-self: center;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="profile.html" class="nav-link">My Profile</a>
+            <a href="attendance.html" class="nav-link">Attendance</a>
+        </nav>
+
+        <header class="header-nav">
+            <div class="back-arrow">＜</div>
+            <h1>Start Lesson</h1>
+        </header>
+
+        <section class="course-summary">
+            <div class="meta-data">
+                <span>CIT123</span>
+                <span>23-10-2023 📅</span>
+            </div>
+            <div class="course-title">Computer Programming</div>
+        </section>
+
+        <main class="selection-card">
+            <div class="input-group">
+                <label class="input-label">Start Time</label>
+                <select class="time-select">
+                    <option>08:00 AM</option>
+                    <option>10:00 AM</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">End Time</label>
+                <select class="time-select">
+                    <option>10:00 AM</option>
+                    <option>12:00 PM</option>
+                </select>
+            </div>
+
+            <button class="save-btn">Save Lesson</button>
+        </main>
+    </div>
+
+</body>
+</html>
