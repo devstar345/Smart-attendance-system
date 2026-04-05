@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="logo">SMART ATTENDANCE</div>
+    <div class="menu-icon" onclick="openMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" onclick="closeMenu()"></div>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+
+    <ul>
+        <li><i class="fas fa-home"></i> Dashboard</li>
+        <li><i class="fas fa-book"></i> manage students</li>
+        <li><i class="fas fa-calendar-check"></i> View Attendance</li>
+        <li><i class="fas fa-user"></i> My Profile</li>
+        <li><i class="fas fa-key"></i> Reset Password</li>
+        <li class="logout"><i class="fas fa-sign-out-alt"></i> Log out</li>
+    </ul>
+
+</div>
+
+<!-- Dummy Content -->
+<div class="content">
+    <h2>Welcome back</h2>
+    <p>Here are your teaching units</p>
+</div>
+
+<script > 
+    function openMenu() {
+    document.getElementById("sideMenu").style.right = "0";
+    document.getElementById("overlay").style.display = "block";
+}
+
+function closeMenu() {
+    document.getElementById("sideMenu").style.right = "-260px";
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
