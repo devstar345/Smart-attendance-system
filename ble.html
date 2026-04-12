@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bluetooth Lecturer Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Find Lecturer</h1>
+
+  <button onclick="findLecturer()">Find Lecturer</button>
+
+  <div id="result"></div>
+
+  <script>
+    function isWebBLEAvailable(){
+        if(!navigator.bluetooth){
+            console.log("web bluetooth is not available")
+            return false
+
+        }
+        return true
+    }
+    function getDeviceInfo(){
+        let options ={
+            acceptAllDevices:true
+        }
+        console.log("requestingble device info")
+        navigator.bluetooth.requestDevice(options).then(device=>{
+            console.log("name:" +device.name)
+        }).catch(error=>{
+            console.log("request device error:"+error)
+        }
+
+        )
+
+        
+    }
+    async function findLecturer() {
+      const resultDiv = document.getElementById("result");
+
+      try {
+        const device = await navigator.bluetooth.requestDevice({
+          filters: [{
+            services: ['12345678-1234-1234-1234-123456789abc']
+          }]
+          
+        });
+         
+
+        resultDiv.innerHTML = "✅ Connected to: " + device.name;
+
+        // OPTIONAL: Connect to GATT (next step)
+        const server = await device.gatt.connect();
+        console.log("Connected to GATT server");
+
+      } catch (error) {
+        console.error(error);
+        resultDiv.innerHTML = "❌ Error or cancelled: " + error.message;
+      }
+    }
+  </script>
+
+
+</body></html>

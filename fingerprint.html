@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://openfpcdn.io/fingerprintjs/v3"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Fingerprint Demo</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Device Fingerprinting Demo</h2>
+    <button onclick="collectData()">Get My Device Info</button>
+
+    <pre id="output">Click the button...</pre>
+
+    <!-- FingerprintJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+
+
+    <script>
+        async function collectData() {
+            const output = document.getElementById("output");
+
+            // Load FingerprintJS
+            const fp = await FingerprintJS.load();
+            const result = await fp.get();
+
+            // Basic fingerprint
+            const visitorId = result.visitorId;
+
+            // Extra browser/device info
+            const data = {
+                visitorId: visitorId,
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                screenResolution: `${screen.width}x${screen.height}`,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                deviceMemory: navigator.deviceMemory || "unknown",
+                hardwareConcurrency: navigator.hardwareConcurrency || "unknown"
+            };
+
+            // Try getting location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        data.latitude = pos.coords.latitude;
+                        data.longitude = pos.coords.longitude;
+
+                        output.textContent = JSON.stringify(data, null, 2);
+                    },
+                    () => {
+                        data.latitude = "denied";
+                        data.longitude = "denied";
+
+                        output.textContent = JSON.stringify(data, null, 2);
+                    }
+                );
+            } else {
+                output.textContent = JSON.stringify(data, null, 2);
+            }
+
+            console.log("Collected Data:", data);
+        }
+    </script>
+
+</body>
+</html>

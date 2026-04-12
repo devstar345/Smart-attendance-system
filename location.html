@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Location</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Get My Location</h2>
+    <button onclick="getLocation()">Allow Location</button>
+
+    <div id="output">Click the button to get your location</div>
+
+    <script>
+        function getLocation() {
+            const output = document.getElementById("output");
+
+            if (navigator.geolocation) {
+                output.innerHTML = "Fetching location...";
+
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        output.innerHTML = `
+                            <strong>Latitude:</strong> ${latitude} <br>
+                            <strong>Longitude:</strong> ${longitude}
+                        `;
+                    },
+                    function(error) {
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                output.innerHTML = "User denied the request for Geolocation.";
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                output.innerHTML = "Location information is unavailable.";
+                                break;
+                            case error.TIMEOUT:
+                                output.innerHTML = "The request to get user location timed out.";
+                                break;
+                            case error.UNKNOWN_ERROR:
+                                output.innerHTML = "An unknown error occurred.";
+                                break;
+                        }
+                    }
+                );
+
+            } else {
+                output.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+    </script>
+
+</body>
+</html>

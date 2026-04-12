@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Session Research</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f4f8; }
+        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 340px; text-align: center; }
+        .status-container { background: #f7fafc; padding: 20px; border-radius: 10px; border: 1px solid #edf2f7; margin-top: 20px;}
+        input[type="text"] { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e0; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #4a90e2; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Module Research</h2>
+        <p style="color: #718096;">Topic: Session Management</p>
+        <div class="status-container">
+            <p style="color: #a0aec0;">No active session</p>
+            <form>
+                <input type="text" placeholder="Enter test username" required>
+                <button type="button">Initialize Session</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
