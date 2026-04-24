@@ -2,13 +2,14 @@ from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash
 from config import get_db_connection
 
-auth_bp = Blueprint('staff_auth_bp', __name__)
+auth_bp = Blueprint('auth_bp', __name__)
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json() or {}
 
-    required_fields = ['name', 'email', 'pf_no', 'password', 'confirm_password']
+    # Validate required fields
+    required_fields = ['name', 'email', 'reg_no', 'password', 'confirm_password']
     if not all(data.get(field) for field in required_fields):
         return jsonify({
             "success": False,
@@ -17,13 +18,25 @@ def register():
 
     name = data.get('name').strip()
     email = data.get('email').strip()
-    pf_no = data.get('pf_no').strip()
+    reg_no = data.get('reg_no').strip().upper()  # 🔥 normalize
     password = data.get('password')
     confirm_password = data.get('confirm_password')
 
-    # 🔥 FORCE ROLE FOR STAFF
-    role = "lecturer"
+    # 🔥 FORCE ROLE
+    role = "student"
 
+    # 🔥 DETERMINE COURSE FROM REG NO
+    if reg_no.startswith("ENG"):
+        course_id = 1  # Electrical Engineering
+    elif reg_no.startswith("CS"):
+        course_id = 2  # Computer Science
+    else:
+        return jsonify({
+            "success": False,
+            "message": "Invalid registration number format (must start with ENG or CS)"
+        }), 400
+
+    # Validate password match
     if password != confirm_password:
         return jsonify({
             "success": False,
@@ -39,35 +52,37 @@ def register():
         cur = conn.cursor()
 
         # Check duplicates
-        check_sql = "SELECT id FROM users WHERE email = %s OR pf_no = %s"
-        cur.execute(check_sql, (email, pf_no))
+        check_sql = "SELECT id FROM users WHERE email = %s OR reg_no = %s"
+        cur.execute(check_sql, (email, reg_no))
 
         if cur.fetchone():
             return jsonify({
                 "success": False,
-                "message": "Email or PF number already exists"
+                "message": "Email or registration number already exists"
             }), 409
 
+        # Hash password
         hashed_password = generate_password_hash(password)
 
-        # 🔥 INSERT WITH ROLE
+        # 🔥 INSERT WITH COURSE ID
         insert_sql = """
-            INSERT INTO users (name, email, pf_no, password, role)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO users (name, email, reg_no, password, role, course_id)
+            VALUES (%s, %s, %s, %s, %s, %s)
             RETURNING id
         """
 
-        cur.execute(insert_sql, (name, email, pf_no, hashed_password, role))
+        cur.execute(insert_sql, (name, email, reg_no, hashed_password, role, course_id))
         user_id = cur.fetchone()[0]
 
         conn.commit()
 
         return jsonify({
             "success": True,
-            "message": "Staff registration successful",
+            "message": "Registration successful",
             "data": {
                 "user_id": user_id,
-                "role": role
+                "role": role,
+                "course_id": course_id
             }
         }), 201
 

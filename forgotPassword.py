@@ -1,16 +1,16 @@
-from flask import Blueprint, request, url_for
+from flask import Blueprint, request, jsonify, url_for, current_app
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 from werkzeug.security import generate_password_hash
 from config import get_db_connection
 
-forgot_password_bp = Blueprint('staff_forgot_password_bp', __name__)
+forgot_password_bp = Blueprint('forgot_password_bp', __name__)
 
 # Get mail and serializer from current app
 mail = None
 s = None
 
-def init_staff_forgot_password(app):
+def init_forgot_password(app):
     global mail, s
     mail = Mail(app)
     s = URLSafeTimedSerializer(app.config["SECRET_KEY"])
@@ -23,7 +23,7 @@ def forgot_password():
     email = data.get("email")
 
     if not email:
-        return {"success": False, "message": "Email is required"}, 400
+        return jsonify({"success": False, "message": "Email is required"}), 400
 
     conn = None
     cur = None
@@ -37,13 +37,13 @@ def forgot_password():
         user = cur.fetchone()
 
         if not user:
-            return {"success": False, "message": "Email not found"}, 404
+            return jsonify({"success": False, "message": "Email not found"}), 404
 
         username = user[1]
 
         # Generate token
         token = s.dumps(email, salt="password-reset-salt")
-        reset_link = url_for("staff_forgot_password.reset_password", token=token, _external=True)
+        reset_link = url_for("forgot_password.reset_password", token=token, _external=True)
 
         # Send email
         msg = Message(
@@ -60,10 +60,16 @@ This link will expire in 30 minutes.
 """
         mail.send(msg)
 
-        return {"success": True, "message": "Password reset link sent to email"}
+        return jsonify({
+            "success": True,
+            "message": "Password reset link sent to email"
+        })
 
     except Exception as e:
-        return {"success": False, "message": f"Error: {str(e)}"}, 500
+        return jsonify({
+            "success": False,
+            "message": f"Error: {str(e)}"
+        }), 500
 
     finally:
         if cur:
@@ -90,8 +96,8 @@ def reset_password(token):
             <style>
                 body {{ font-family: Arial, sans-serif; margin: 40px; }}
                 .container {{ max-width: 400px; margin: 0 auto; }}
-                input {{ width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }}
-                button {{ background: #007bff; color: white; padding: 10px; border: none; width: 100%; cursor: pointer; }}
+                input {{ width: 100%; padding: 10px; margin: 10px 0; }}
+                button {{ background: #007bff; color: white; padding: 10px; border: none; width: 100%; }}
                 .message {{ margin: 10px 0; padding: 10px; border-radius: 4px; }}
                 .success {{ background: #d4edda; color: #155724; }}
                 .error {{ background: #f8d7da; color: #721c24; }}
@@ -185,7 +191,7 @@ def reset_password(token):
         <body>
             <div class="container">
                 <div class="success">Password reset successful! You can now log in with your new password.</div>
-                <a href="/staff/login">Go to Staff Login</a>
+                <a href="/student/login">Go to Login</a>
             </div>
         </body>
         </html>
@@ -220,3 +226,5 @@ def reset_password(token):
             cur.close()
         if conn:
             conn.close()
+
+

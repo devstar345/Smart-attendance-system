@@ -2,19 +2,19 @@ from flask import Blueprint, request, jsonify, session
 from werkzeug.security import check_password_hash, generate_password_hash
 from config import get_db_connection
 
-lecturer_reset_bp = Blueprint("lecturer_reset_bp", __name__, url_prefix="/lecturer")
+reset_bp = Blueprint("reset_bp", __name__, url_prefix="/student")
 
 
-@lecturer_reset_bp.route("/reset-password", methods=["POST"])
+@reset_bp.route("/reset-password", methods=["POST"])
 def reset_password():
     data = request.get_json()
 
-    lecturer_id = session.get("staff_id")
+    student_id = session.get("student_id")
 
     old_password = data.get("old_password")
     new_password = data.get("new_password")
 
-    if not lecturer_id:
+    if not student_id:
         return jsonify({
             "success": False,
             "message": "Not logged in"
@@ -30,19 +30,19 @@ def reset_password():
     cur = conn.cursor()
 
     try:
-        # 1. Get lecturer password
+        # 1. Get current password
         cur.execute("""
             SELECT password
             FROM users
-            WHERE id = %s AND role = 'lecturer'
-        """, (lecturer_id,))
+            WHERE id = %s
+        """, (student_id,))
 
         row = cur.fetchone()
 
         if not row:
             return jsonify({
                 "success": False,
-                "message": "Lecturer not found"
+                "message": "User not found"
             }), 404
 
         current_hashed = row[0]
@@ -60,8 +60,8 @@ def reset_password():
         cur.execute("""
             UPDATE users
             SET password = %s
-            WHERE id = %s AND role = 'lecturer'
-        """, (new_hashed, lecturer_id))
+            WHERE id = %s
+        """, (new_hashed, student_id))
 
         conn.commit()
 
