@@ -42,6 +42,20 @@ CREATE TABLE public.user_deviceinfo (
     -- prevent duplicate device registration
     CONSTRAINT unique_user_device UNIQUE (user_id, visitor_id)
 );
+
+CREATE TABLE public.push_subscriptions (
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL,
+    endpoint TEXT NOT NULL UNIQUE,
+    p256dh TEXT NOT NULL,
+    auth TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_push_student
+        FOREIGN KEY (student_id)
+        REFERENCES public.users (id)
+        ON DELETE CASCADE
+);
 -- =========================================
 -- UNITS TABLE 
 -- =========================================
@@ -289,16 +303,21 @@ CREATE TABLE public.academic_sessions (
 -- STEP 3: ASSIGN LECTURER TO UNIT
 -- =========================================
 
-INSERT INTO public.unit_assignments (
+select * from unit_assignments;
+select * from course;
+select * from units;
+SELECT * FROM users WHERE role = 'lecturer';
+
+INSERT INTO unit_assignments (
     lecturer_id,
     unit_id,
     course_id,
     session_id
 )
 VALUES (
-    1,  -- lecturer_id (change this)
-    2,  -- unit_id (change this)
-    1,  -- course_id (change this)
+    14,  -- lecturer_id (change this)
+    5,  -- unit_id (change this)
+    2,  -- course_id (change this)
 
     -- Automatically fetch ACTIVE academic session
     (
