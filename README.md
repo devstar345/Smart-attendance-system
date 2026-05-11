@@ -2,7 +2,7 @@
 
 A comprehensive web-based attendance management system built with Flask and PostgreSQL, designed to streamline attendance tracking for educational institutions. The system provides separate portals for students and staff/lecturers with support for offline functionality and push notifications.
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -16,14 +16,14 @@ A comprehensive web-based attendance management system built with Flask and Post
 - [Database](#database)
 - [Troubleshooting](#troubleshooting)
 
-## ✨ Features
+##  Features
 
 ### Student Portal
 - **Authentication**: Secure login and signup with email verification
 - **Unit Registration**: Browse and enroll in available courses
-- **Attendance Marking**: Mark attendance in active lessons with QR code support
+- **Attendance Marking**: Mark attendance in active lessons using Bluetooth and GPS verification.
 - **Attendance Tracking**: View personal attendance history and records
-- **Device Management**: Manage registered devices for push notifications
+- **Device Management**: Manage registered devices for push notifications and device fingerprinting to uniquely identify users.
 - **Profile Management**: Update personal profile information
 - **Offline Support**: Access cached data when offline
 
@@ -62,7 +62,6 @@ smart_attendance_system/
 │   ├── classwork.py                # Classwork endpoints
 │   ├── devices.py                  # Device management
 │   ├── enroll.py                   # Unit enrollment
-│   ├── exersice.py                 # Exercise endpoints
 │   ├── forgotPassword.py           # Password recovery
 │   ├── push_subscription.py        # Push notification subscriptions
 │   ├── registered_units.py         # Registered units/dashboard
@@ -93,7 +92,6 @@ smart_attendance_system/
 │   │   ├── forgot_password.html
 │   │   ├── Reset_password.html
 │   │   ├── onboarding.html
-│   │   └── onb.html
 │   └── staff_portal/               # Staff templates
 │       ├── login.html
 │       ├── sign_up.html
@@ -103,8 +101,6 @@ smart_attendance_system/
 │       ├── myProfile.html
 │       ├── forgot_password.html
 │       ├── Reset_password.html
-│       ├── test.html
-│       └── test.html
 │
 └── static/                         # Static assets
     ├── manifest.json               # PWA manifest
@@ -140,7 +136,7 @@ smart_attendance_system/
             └── sign_up.js
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 - **Framework**: Flask
@@ -160,7 +156,7 @@ smart_attendance_system/
 ### Database
 - PostgreSQL with psycopg2 driver
 
-## 📦 Prerequisites
+##  Prerequisites
 
 - Python 3.7 or higher
 - PostgreSQL 10 or higher
@@ -168,7 +164,7 @@ smart_attendance_system/
 - Git (optional)
 - A Gmail account (for email notifications)
 
-## 🚀 Installation
+##  Installation
 
 ### 1. Clone the Repository
 
@@ -205,7 +201,7 @@ createdb attendance_db
 psql attendance_db < smart_attedance_sql_queries.sql
 ```
 
-## ⚙️ Configuration
+##  Configuration
 
 ### 1. Create a `.env` File
 
@@ -252,7 +248,7 @@ This will generate public and private VAPID keys. Copy these to your `.env` file
 2. Generate an App Password at https://myaccount.google.com/apppasswords
 3. Use this password in the `MAIL_PASSWORD` environment variable
 
-## ▶️ Running the Application
+##  Running the Application
 
 ### Development Mode
 
@@ -269,7 +265,7 @@ export FLASK_ENV=production
 python app.py
 ```
 
-## 📚 API Documentation
+##  API Documentation
 
 ### Student API Endpoints
 
@@ -312,7 +308,7 @@ python app.py
 - `GET /api/staff/unit-report` - Generate attendance reports
 - `POST /api/staff/manage-students` - Manage enrolled students
 
-## 💻 Usage
+## Usage
 
 ### For Students
 
@@ -330,7 +326,7 @@ python app.py
 4. **Track Attendance**: Monitor student attendance in real-time
 5. **Generate Reports**: Create attendance reports for analysis
 
-## 🗄️ Database
+## Database
 
 ### Schema Overview
 
@@ -344,7 +340,7 @@ The database includes tables for:
 
 Detailed schema available in `smart_attedance_sql_queries.sql`
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -372,11 +368,11 @@ Detailed schema available in `smart_attedance_sql_queries.sql`
 
 Set `DEBUG=True` in `.env` and restart the application for detailed error messages.
 
-## 📝 License
+## License
 
 This project is provided as-is for educational purposes.
 
-## 👥 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 1. Fork the repository
@@ -385,7 +381,7 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch
 5. Create a Pull Request
 
-## 📧 Support
+## Support
 
 For issues or questions, please contact the development team or open an issue in the repository.
 
